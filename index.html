@@ -1,132 +1,76 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gamebois</title>
-    <link rel="icon" type="image/gif" href="/gamebois/imageAssets/gameboislogo512.gif"/>
-    <link rel="stylesheet" type="text/css" href="main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Announcement</title>
+<style>
+  /* Basic reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2c2c34, #3b2c52);
+  }
+
+  .announcement-container {
+    background: rgba(50, 50, 60, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #d3bfff;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(150, 100, 255, 0.2);
+    border: 1px solid rgba(200, 150, 255, 0.3);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: rgba(150, 100, 255, 0.35);
+    transform: translateY(-3px);
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #e0d9ff;
+  }
+</style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KDP66SX5Q6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-KDP66SX5Q6');
-</script>
-
 <body>
-    <!-- <iframe src="https://teddblue.github.io/gamebois/player?game=tetris&type=gb" width=480 height=360></iframe> -->
-    <img alt="logo" src="/gamebois/imageAssets/gameboislogo512.gif"/>
-    <h1>gamebois</h1>
-    <p id = "quicklinks">
-          <a href="freeplay.html">[upload game]</a>
-    </p>
-    <br>
-    <!-- Tab links -->
-    <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'gb')" id="defaultOpen"><img src="./imageAssets/consoles/GB-32x32.png" alt="Gameboy"></button>
-    <button class="tablinks" onclick="openTab(event, 'gbc')"><img src="./imageAssets/consoles/GBC-32x32.png" alt="Gameboy Color"></button>
-    <button class="tablinks" onclick="openTab(event, 'gba')"><img src="./imageAssets/consoles/GBA-32x32.png" alt="Gameboy Advance"></button>
-    <button class="tablinks" onclick="openTab(event, 'nds')"><img src="./imageAssets/consoles/NDS-32x32.png" alt="Nintendo DS"></button>
-    <button class="tablinks" onclick="openTab(event, 'swf')"><p>Adobe Flash</p></button>
-
-    </div>
-  
-    <!-- Tab content -->
-    <div id="gb" class="tabcontent">
-        <h3>Gameboy Games</h3>
-    </div>
-    <div id="gbc" class="tabcontent">
-        <h3>Gameboy Color Games</h3>
-    </div>
-    <div id="gba" class="tabcontent">
-        <h3>Gameboy Advance Games</h3>
-    </div>
-    <div id="nds" class="tabcontent">
-        <h3>Nintendo DS Games</h3>
-        <p>these games are not garunteed to run smoothly</p>
-    </div>
-    <div id="swf" class="tabcontent">
-        <h3>Adobe Flash Games</h3>
-    </div>
-
-    <p>want a game or platform added? <a href="https://forms.gle/MWwqK7jthn1FZkk38">submit a request</a></p>
-    <!-- Tab code (by W3Schools)-->
-    <script>
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-        function openTab(evt, TabName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(TabName).style.display = "block";
-        evt.currentTarget.className += " active";
-        }
-    </script>
-    <!-- display games-->
-    <script>
-        //localStorage.removeItem("previous")
-        if (localStorage.getItem("previous") != null){
-            data = JSON.parse(localStorage.getItem("previous"))
-
-            var a = document.createElement("a")
-            a.href = "player.html?type=" + data.type + "&game=" + data.game
-            var img = document.createElement("img")
-            img.src = "./imageAssets/" + data.type + "/" + data.game + ".png"
-            a.appendChild(img)
-            var text = document.createElement("p")
-            text.innerHTML = "Continue Playing:"
-
-            quicklinks = document.getElementById("quicklinks")
-            quicklinks.appendChild(text)
-            quicklinks.appendChild(a)
-        }
-
-        var content = {gb:["tetris","pokemon-blue"]}
-        function listTitles(type){
-            var menu = document.getElementById(type)
-            var gameslist = content[type]
-            for (let i = 0; i < gameslist.length; i++) {
-                var link = "player.html?game=" + gameslist[i] + "&type=" + type;
-                var imageurl = "./imageAssets/" + type + "/" + gameslist[i] + ".png";
-                const a = document.createElement("a");
-                a.setAttribute("href", link);
-                const img = new Image();
-                img.src = imageurl;
-                img.alt = gameslist[i]
-                a.appendChild(img);
-                menu.appendChild(a);
-                a.className = "a"
-                img.className = "img"
-            }
-        }
-        async function getContent(){
-            const requestURL = './content.json';
-            const request = new Request(requestURL);
-            const response = await fetch(request);
-            content = await response.json();
-            console.log(JSON.stringify(content))
-            listTitles("gb")
-            listTitles("gbc")
-            listTitles("gba")
-            listTitles("nds")
-            listTitles("swf")
-        }
-        getContent()
-    </script>
-    <br>
-
+  <div class="announcement-container">
+    <h1>im scrapping this site</h1>
+    <a href="https://ubgcosmos.github.io" class="btn">new link</a>
+    <p>the link name is a bit obvious i must say</p>
+  </div>
+</body>
 </html>
